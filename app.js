@@ -1,14 +1,20 @@
 const express = require("express");
+const app = express();
 const mongoose = require("mongoose");
 require('dotenv/config');
 
-const app = express();
+//Import ROUTES
+const postsRoute = require('./routes/posts');
+
+
+app.use('/posts', postsRoute);
+
 
 //middlewares in express
 //---- functions that execute
 
 app.use("/post", () => {
-  console.log("This is a middleware running");
+  // console.log("This is a middleware running");
 });
 
 //ROUTES
