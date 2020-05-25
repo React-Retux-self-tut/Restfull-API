@@ -1,7 +1,18 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const bodyparser= require("body-parser");
+
 require('dotenv/config');
+
+//middlewares in express
+//---- functions that execute
+// app.use("/post", () => {
+  //   // console.log("This is a middleware running");
+  // });
+
+
+app.use(bodyparser.json())
 
 //Import ROUTES
 const postsRoute = require('./routes/posts');
@@ -10,15 +21,9 @@ const postsRoute = require('./routes/posts');
 app.use('/posts', postsRoute);
 
 
-//middlewares in express
-//---- functions that execute
-
-app.use("/post", () => {
-  // console.log("This is a middleware running");
-});
-
-//ROUTES
-
+  
+  //ROUTES
+  
 app.get("/", (req, res) => {
   res.send("We are on home - page");
 });
